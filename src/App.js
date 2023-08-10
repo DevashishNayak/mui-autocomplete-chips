@@ -17,7 +17,7 @@ function AutocompleteChips() {
       const chipValue = inputValue.trim();
       console.log({ chipValue, inputValue });
       if (chipValue) {
-        setChips([...chips, chipValue]);
+        setChips([...new Set([...chips, chipValue])]);
         setInputValue("");
       }
     }
@@ -34,7 +34,7 @@ function AutocompleteChips() {
       .split(" ")
       .map((value) => value.trim())
       .filter((value) => value);
-    setChips([...chips, ...newChips]);
+    setChips([...new Set([...chips, ...newChips])]);
     event.preventDefault();
   };
   console.log({ inputValue });
